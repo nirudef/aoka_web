@@ -1,0 +1,202 @@
+{
+  "appTitle": "Almaty Regional Bar Association",
+  "appDescription": "The Almaty Regional Bar Association is an association of lawyers from Almaty and the Almaty region. It provides legal assistance, consultations, and protection of the rights of individuals and organizations. Information about the association's activities and contact information is available.",
+  "nav": {
+    "home": "Home",
+    "collegium": "Collegium",
+    "lawyers": "Lawyers",
+    "center": "Center AT&I",
+    "contacts": "Contacts",
+    "login": "Sign In",
+    "logout": "Logout",
+    "profile": "Profile",
+    "back": "Back",
+    "next": "Forward"
+  },
+  "home": {
+    "subtitle": "We unite professionals who protect the rights of citizens and the interests of society.",
+    "learnMore": "More about us",
+    "joinNow": "Login or register"
+  },
+  "footer": {
+    "about": "The Almaty Regional Bar Association unites professional defense attorneys who provide qualified legal assistance to individuals and organizations.",
+    "rights": "All rights reserved.",
+    "for_lawyer": "For a lawyer",
+    "links": "Links"
+  },
+  "login": {
+    "formTitle": "Authorization form",
+    "title": "Login to the website of the Almaty Regional Bar Association",
+    "description": "Authorization page on the website of the Almaty Regional Bar Association.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign In"
+  },
+  "collegium": {
+    "title": "About the Almaty Regional Bar Association",
+    "description": "Information about the activities of the Almaty Regional Bar Association, its bodies and documents."
+  },
+  "center": {
+    "title": "Center for Advanced Training and Internships – training and development of lawyers",
+    "description": "The Center for Advanced Training and Internships of the Almaty Regional Bar Association organizes training, seminars, and development programs for lawyers and interns."
+  },
+  "cabinet": {
+    "title": "Personal Cabinet",
+    "profile": "Profile",
+    "edit": "Edit",
+    "personalData": "Personal Data",
+    "professionalData": "Professional Data",
+    "workplace": "Workplace",
+    "id": "ID",
+    "email": "Email",
+    "name": "Full Name",
+    "phone": "Phone",
+    "iin": "IIN",
+    "licenseNumber": "License Number",
+    "licenseIssuedAt": "License Issued On",
+    "joinedAt": "Joined the Bar On",
+    "branch": "Branch",
+    "lawOffice": "Law Office",
+    "address": "Address",
+    "roles": "Roles",
+    "users": "Users",
+    "branches": "Branches",
+    "offices": "Offices",
+    "reports": "Reports",
+    "backToSite": "Back to AOKA Website",
+    "description": "Your personal section on the website.",
+    "welcome": "Welcome! Here you can manage your data and activities.",
+    "adminPanel": "Admin Panel",
+    "manageUsers": "Manage Users",
+    "editProfile": "Edit Profile",
+    "fields": {
+      "id": "ID",
+      "email": "Email",
+      "name": "Full Name",
+      "phone": "Phone",
+      "status": "Status",
+      "roles": "Roles"
+    },
+    "status": {
+      "verified": "Verified",
+      "unverified": "Unverified"
+    },
+    "role_guest": "Guest",
+    "role_lawyer": "Lawyer",
+    "role_accountant": "Accountant",
+    "role_admin": "Administrator",
+    "role_branch_head": "Branch Head",
+    "articles": {
+      "title": "Publications",
+      "description": "News, announcements, and notices of the Almaty Regional Bar Association.",
+      "metaTitleArticle": "Publications — AOKA",
+      "metaDescriptionArticle": "News and announcements of the Almaty Regional Bar Association.",
+      "publishedOn": "Published on",
+      "readMore": "Read more",
+      "new": "New Publication",
+      "edit": "Edit Publication",
+      "create": "Create Publication",
+      "slug": "Slug",
+      "status": "Status",
+      "category": "Category",
+      "publishedAt": "Publication Date",
+      "lead": "Lead",
+      "body": "Body",
+      "metaTitle": "SEO: title",
+      "metaDescription": "SEO: description",
+      "ru": "Russian",
+      "kk": "Kazakh",
+      "en": "English",
+      "save": "Save",
+      "saving": "Saving...",
+      "saved": "Publication saved.",
+      "error": "Error while saving.",
+      "statuses": {
+        "draft": "Draft",
+        "published": "Published",
+        "archived": "Archived"
+      },
+      "deleteConfirm": "Delete this publication? This action cannot be undone.",
+      "deleted": "Publication deleted."
+    },
+    "categories": {
+      "title": "Publication Categories",
+      "new": "New Category",
+      "edit": "Edit Category",
+      "create": "Create Category",
+      "key": "Key",
+      "position": "Position",
+      "ru": "Russian",
+      "kk": "Kazakh",
+      "en": "English",
+      "save": "Save",
+      "saving": "Saving...",
+      "saved": "Category saved.",
+      "error": "Error while saving.",
+      "deleteConfirm": "Delete this category? All publications will lose their category.",
+      "deleted": "Category deleted."
+    }
+  },
+  "form": {
+    "editUser": "Edit User",
+    "personalData": "Personal Information",
+    "firstName": "First Name*",
+    "lastName": "Last Name*",
+    "middleName": "Patronymic",
+    "iin": "IIN",
+    "phone": "Phone",
+    "email": "Email*",
+    "professionalData": "Professional Information",
+    "licenseNumber": "License Number",
+    "licenseIssuedAt": "License Issue Date",
+    "joinedAt": "Joined Date",
+    "workplace": "Workplace",
+    "branch": "Branch",
+    "lawOffice": "Law Office",
+    "address": "Address",
+    "roles": "Roles",
+    "rolesHint": "Hold Ctrl (Cmd on Mac) to select multiple",
+    "save": "Save Changes",
+    "saveSelf": "Save Profile",
+    "saveOther": "Save User"
+  },
+  "messages": {
+    "success": {
+      "profileUpdated": "Your profile has been updated successfully.",
+      "userSaved": "User data saved successfully."
+    },
+    "error": {
+      "network": "Network error. Please check your connection.",
+      "validation": "Please fix errors in the form.",
+      "saveFailed": "Failed to save changes.",
+      "userNotFound": "User not found.",
+      "unauthorized": "You are not authorized to edit this user."
+    }
+  },
+  "common": {
+    "notSelected": "— Not selected —"
+  },
+  "profile": { "title": "Profile", "logout": "Logout" },
+  "contacts": {
+    "title": "Contacts of the Almaty Regional Bar Association",
+    "description": "Contact information for the Almaty Regional Bar Association and its branches. You can contact the Bar Association using the contact information provided.",
+    "addressLabel": "Address",
+    "streetAddress": "St. Stepnaya 8A, microdistrict. Ivushka",
+    "city": "Konaev",
+    "address": "St. Stepnaya 8A, microdistrict. Ivushka, Konaev",
+    "phoneLabel": "Phone",
+    "hoursLabel": "Working hours",
+    "hours": "Mon–Fri 9:00–18:00"
+  },
+  "lawyers": {
+    "metaTitle": "Lawyers of Almaty and the Almaty region",
+    "metaDescription": "Lawyers of Almaty and the Almaty region, members of the Almaty Regional Bar Association",
+    "title": "Lawyers of the Collegium",
+    "searchPlaceholder": "Search by full name",
+    "allBranches": "All branches",
+    "allLawOffices": "All law firms",
+    "fio": "Full name",
+    "branch": "Branch",
+    "lawFirm": "Law office"
+  }
+}

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 :root {
   --background: #ffffff;
@@ -23,4 +23,37 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import "tailwindcss";
+
+:root {
+  --background: 255 255 255;
+  --foreground: 23 23 23;
+  --primary: 37 99 235; /* синий */
+  --muted: 243 244 246;
+  --border: 229 231 235;
+}
+
+.dark {
+  --background: 10 10 10;
+  --foreground: 237 237 237;
+  --primary: 59 130 246;
+  --muted: 38 38 38;
+  --border: 64 64 64;
+}
+
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.active-link {
+  @apply text-blue-600 font-semibold;
 }

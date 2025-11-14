@@ -1,3 +1,136 @@
+# 🏛️ Алматинская областная коллегия адвокатов (АОКА)
+
+> **Официальный сайт** — информационный ресурс для граждан, юристов и организаций, предоставляющий доступ к публикациям, реестру адвокатов, филиалам и юридическим консультациям.
+
+[![АОКА](https://aoka.kz/wp-content/uploads/2021/10/PHOTO-2021-10-07-12-38-00.jpg)](https://aoka.kz)
+
+---
+
+## 🔗 Демо и ссылки
+
+- **Сайт**: [https://aoka.kz](https://aoka.kz)  
+- **Репозиторий**: `git@github.com:nirudef/aoka_web.git`  
+- **API (Rails)**: `https://api.aoka.kz`  
+- **VPS (Deploy)**: `aoka-prod-01 (Almaty, Kazakhstan)`  
+
+---
+
+## 🌐 Основные возможности
+
+| Для посетителей | Для администраторов |
+|------------------|---------------------|
+| ✅ Просмотр новостей, конкурсов, объявлений | ✅ Управление публикациями (CRUD) |
+| ✅ Поиск адвокатов, филиалов, контор | ✅ Управление категориями, филиалами, конторами |
+| ✅ Многоязычность: **русский**, **казахский**, **английский** | ✅ Управление пользователями (адвокаты, бухгалтеры, админы) |
+| ✅ Адаптивный дизайн (мобильные/планшеты/десктопы) | ✅ Личный кабинет с редактированием профиля |
+| ✅ SEO-оптимизация (метаданные, ЧПУ, Open Graph) | ✅ Безопасность: Bearer-токены, сессии в БД |
+
+---
+
+## 🛠 Технологический стек
+
+| Уровень | Технологии |
+|--------|------------|
+| **Frontend** | Next.js 16 (App Router), TypeScript, Tailwind CSS, `lucide-react`, `@tiptap/react` (WYSIWYG) |
+| **Backend** | Ruby on Rails 8.0, PostgreSQL, `globalize`, `friendly_id`, `authentication-zero` |
+| **Аутентификация** | Stateless JWT-подобные токены (`signed_id`), кэширование `/me` через `revalidateTag` |
+| **Локализация** | JSON-файлы (`ru/kk/en.json`), `getTranslations`, runtime-переключение без перезагрузки |
+| **Хостинг** | VPS (Ubuntu 24.04, Nginx, Puma), `next build && next start` |
+| **CI/CD** | GitLab CI → Deploy via SSH + `systemd` |
+
+---
+
+## 📁 Структура проекта
+
+aoka-web/
+├── app/
+│ ├── [lang]/ # Многоязычные маршруты (ru/kk/en)
+│ │ ├── articles/ # Публичные статьи
+│ │ ├── cabinet/ # Личный кабинет (только для авторизованных)
+│ │ │ ├── profile/ # Редактирование профиля
+│ │ │ ├── articles/ # Управление публикациями (CRUD)
+│ │ │ ├── categories/ # Управление категориями
+│ │ │ └── users/ # Управление пользователями (только для admin)
+│ │ └── page.tsx # Главная страница
+│ └── layout.tsx # Root layout (загрузка пользователя, тема)
+├── lib/
+│ ├── i18n/ # Система переводов
+│ ├── getcurrenuser.ts # Кэшированный запрос /api/v1/me
+│ ├── validation/ # Ручная валидация без Zod
+│ └── types.ts # Глобальные типы (User, Branch, Article)
+├── public/
+│ └── locales/ # JSON-переводы (ru.json, kk.json, en.json)
+└── components/
+├── CabinetSidebar.tsx # Роль-бейсед навигация
+├── CabinetHeader.tsx # Хлебные крошки
+└── RichTextEditor.tsx # Tiptap WYSIWYG (безопасный, SSR-friendly)
+
+---
+
+## 🔑 Ключевые особенности реализации
+
+### 1. **Безопасная аутентификация**
+- Используется `authentication-zero` + `Session.find_signed(token)`
+- Токен хранится в `httpOnly` cookie → защищён от XSS
+- `/api/v1/me` кэшируется на 5 минут через `revalidateTag('user', { expire: 0 })`
+- При обновлении профиля — `revalidateUser()` + `router.refresh()` → мгновенное обновление данных
+
+### 2. **Многоязычные сущности**
+- **Articles & Categories** — переводы через `globalize`:
+  ```ruby
+  translates :title, :body, :lead, fallbacks: { 'kk' => ['kk', 'ru'] }
+  ```
+
+- Фронтенд — все переводы в public/locales/*.json, подгрузка через getTranslations(lang)
+
+### 3. Оптимизация производительности
+- getCurrentUser() → 1 запрос/пользователь (не на каждый компонент),
+- fetch для /api/v1/articles — кэшируется через next: { revalidate: 60 },
+- CabinetSidebar и CabinetHeader — SSR-friendly, нет useEffect в layout.
+
+### 4. WYSIWYG-редактор
+- Tiptap (ProseMirror) — безопасный, типизированный, dark-mode ready,
+- Санитизация на бэкенде: sanitize-html (только разрешённые теги/атрибуты),
+- Поддержка: жирный, курсив, заголовки, списки, цитаты, таблицы, изображения.
+
+### 5. SEO и ЧПУ
+
+- Slug через friendly_id с поддержкой кириллицы:
+    ```ruby
+    normalize_friendly_id("Конкурс әділ қызметкерлер") # → konkurs-adil-qyzmetkerler
+    ```
+
+## 🚀 Быстрый старт (локальная разработка)
+Требования
+- Node.js 18+, Ruby 3.1+, PostgreSQL 14+
+
+#### Frontend
+
+    ```ruby
+    git clone git@github.com:nirudef/aoka_web.git
+    cd web
+    npm install
+    cp .env.example .env.local
+    npm run dev
+    # → http://localhost:3000
+    ```
+
+#### Backend (API)
+- при получении репозитория
+
+    ```ruby
+    bundle install
+    rails db:create db:migrate db:seed
+    rails s -p 3001
+    # → http://localhost:3001
+    ```
+
+## 📜 Лицензия
+Проект разработан для Алматинской областной коллегии адвокатов.
+Код закрытый, распространение запрещено без письменного согласия.
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
@@ -13,24 +146,3 @@ pnpm dev
 # or
 bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
