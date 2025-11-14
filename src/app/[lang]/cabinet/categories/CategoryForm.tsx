@@ -9,6 +9,14 @@ interface Category {
   id?: string
   key: string
   position: number
+  translations: {
+    ru: CategoryTranslation
+    kk: CategoryTranslation
+    en: CategoryTranslation
+  }
+}
+
+interface CategoryTranslation {
   name: string
 }
 
