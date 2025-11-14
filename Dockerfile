@@ -42,6 +42,8 @@ COPY --from=builder /app/public ./public
 # 3. Файлы Node.js для запуска
 COPY --from=builder /app/package.json ./package.json
 
+COPY --from=builder /app/node_modules ./node_modules
+
 # Пользователь для безопасности
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
