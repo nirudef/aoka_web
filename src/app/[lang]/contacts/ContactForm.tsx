@@ -19,7 +19,7 @@ export default function ContactForm({ lang }: Props) {
     setError(null)
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/contact_messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message, lang }),
