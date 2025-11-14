@@ -22,7 +22,7 @@ COPY . .
 # Пример: ENV NEXT_PUBLIC_API_URL=https://api.aoka.kz
 
 # Собираем приложение
-RUN pnpm build
+RUN npm run build
 
 # 3. Runner Stage: Финальный, минимальный образ для продакшена
 # Используем минимальный образ Node.js для сокращения размера
