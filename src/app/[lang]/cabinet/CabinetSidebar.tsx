@@ -85,7 +85,7 @@ export default function CabinetSidebar({
     ...(user.roles?.includes('admin')
       ? [{
           href: `/${lang}/cabinet/articles`,
-          label: t.cabinet.articles.title ?? 'articles',
+          label: 'articles',
           icon: <Landmark className="w-5 h-5" />,
           roles: ['admin'],
         }] 
@@ -93,7 +93,7 @@ export default function CabinetSidebar({
     ...(user.roles?.includes('admin')
       ? [{
           href: `/${lang}/cabinet/categories`,
-          label: t.cabinet?.categories.title ?? 'categories',
+          label: 'categories',
           icon: <Landmark className="w-5 h-5" />,
           roles: ['admin'],
         }] 
