@@ -9,8 +9,8 @@ RUN corepack enable
 
 # Устанавливаем зависимости и кэшируем их
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+COPY package.json package-lock.json ./
+RUN npm install --frozen-lockfile
 
 # 2. Builder Stage: Собирает Next.js приложение
 # Копируем зависимости из предыдущего этапа
@@ -51,4 +51,4 @@ USER nextjs
 EXPOSE 3000
 
 # Запускаем приложение в продакшене
-CMD ["pnpm", "start"]
+CMD ["npm", "start"]
