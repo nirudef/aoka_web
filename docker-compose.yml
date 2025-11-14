@@ -10,8 +10,8 @@ services:
     environment:
       NODE_ENV: production
       NEXT_PUBLIC_API_URL: "https://api.aoka.xn--80ao21a/"
-    volumes:
-      - .:/app
+    # volumes:
+      # - .:/app
     working_dir: /app
     # command: bash -lc "npm ci && npm run build && npm start"
     env_file:
