@@ -13,6 +13,6 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    command: bash -lc "npm ci && npm run build && npm start"
+    # command: bash -lc "npm ci && npm run build && npm start"
     env_file:
       - .env
